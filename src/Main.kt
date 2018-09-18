@@ -12,7 +12,22 @@ fun main(args: Array<String>) {
             get("/") {
                 val ua = call.request.userAgent() ?: "No user agent"
                 val type = determineDevice(ua)
-                call.respondText("$ua\n$type", ContentType.Text.Plain)
+                val query = call.request.queryParameters["origin"]
+                println(ua)
+                println(query)
+                when (type) {
+                    ClientDevice.IOS -> call.respondRedirect("/iOS/deeplink?origin=$query")
+                    ClientDevice.ANDROID -> call.respondRedirect("/android/deeplink?origin=$query")
+                    ClientDevice.OTHER -> call.respondText("$ua\n$type", ContentType.Text.Plain)
+                }
+            }
+            get("/android/deeplink"){
+                val query = call.request.queryParameters["origin"]
+                call.respondText("Hello Android, from $query", ContentType.Text.Plain)
+            }
+            get("/iOS/deeplink"){
+                val query = call.request.queryParameters["origin"]
+                call.respondText("Hello iOS, from $query", ContentType.Text.Plain)
             }
         }
     }
