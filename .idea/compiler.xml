@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="DeepLink_main" target="1.8" />
+      <module name="DeepLink_reso" target="1.8" />
+      <module name="DeepLink_resour" target="1.8" />
+      <module name="DeepLink_resourc" target="1.8" />
+      <module name="DeepLink_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
